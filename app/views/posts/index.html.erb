@@ -1,27 +1,27 @@
-<h1>Listing posts</h1>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
- 
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= link_to post.title, post %></td>
-      <td><%= post.content %></td>
-      <% post.comments.each do|c| %>
-        <td><%= c.text %></td>
-      <%end%>
-      <td>
-        <%= image_tag post.image.url(:thumb), class: 'instagram-upload' %>
-      </td>
-    </tr>
-   <tr>
-    <td><%= link_to 'Edit post', edit_post_path(post) %></td>
-    <td><%= link_to 'Delete post', post_path(post), method: :delete %></td>
-    <td><%= link_to 'Add a comment', new_post_comment_path(post) %></td>
-    </tr>
+<% if @posts.none? %>
+  No photos!
   <% end %>
 
-</table>
+<% @posts.each do |post| %>
+  <div class='row'>
+    <div class='col-md-12'>
+      <%= link_to post.title, post %>
+    </div>
+    <div class='col-md-12'>
+      <%= post.content %>
+    </div>
+    <div class='col-md-12'>
+      <%= image_tag post.image.url(:thumb), class: 'instagram-upload' %>
+    </div>
+    <% post.comments.each do|c| %>
+      <div class='col-md-12'>
+        <%= c.text %>
+      </div>
+    <%end%>
+    <div class='col-md-12'>
+      <%= link_to 'Edit post', edit_post_path(post) %>
+      <%= link_to 'Delete post', post_path(post), method: :delete %>
+      <%= link_to 'Add a comment', new_post_comment_path(post) %>
+    </div>
+  </div>
+<% end %>
