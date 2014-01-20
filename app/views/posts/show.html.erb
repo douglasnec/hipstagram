@@ -1,0 +1,15 @@
+<%= link_to @post.title, @post %>
+<%= @post.content %>
+
+<%= link_to 'Edit post', edit_post_path(@post) %>
+<%= link_to 'Delete post', post_path(@post), method: :delete %>
+<%= link_to 'Add a comment', new_post_comment_path(@post) %>
+<h2>Comments</h2>
+<% @post.comments.each do|c| %>
+  <td><%= c.text %></td>
+<%end%>
+
+<%= image_tag @post.image.url(:thumb), class: 'instagram-upload' %>
+
+
+<%= link_to 'home', root_path %>
