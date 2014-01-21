@@ -20,7 +20,9 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def self.display_by_tags_or_all(tag_id)
-    tag_id ? Tag.find(tag_id).posts : Post.all
+  def self.display_by_tags_or_all(tag_name)
+
+    tag_name ? Tag.find_by(name: tag_name).posts : Post.all
+
   end
 end
