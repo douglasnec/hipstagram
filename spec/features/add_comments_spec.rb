@@ -9,7 +9,7 @@ describe 'adding comments to a post' do
 
   it 'adds comments from a form providing Text' do
     visit '/posts'
-    click_link 'Add a comment'
+    click_link 'Comment'
 
     fill_in 'Text', with: 'This article is great'
     click_button 'Create Comment'

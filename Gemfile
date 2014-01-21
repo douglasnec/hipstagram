@@ -46,6 +46,8 @@ gem 'paperclip'
 
 gem 'aws-sdk'
 
+gem 'rails_12factor', group: :producion
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'

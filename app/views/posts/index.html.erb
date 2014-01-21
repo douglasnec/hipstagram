@@ -5,23 +5,32 @@
 <% @posts.each do |post| %>
   <div class='row'>
     <div class='col-md-12'>
-      <%= link_to post.title, post %>
+      <h2><%= link_to post.title, post %></h2>
     </div>
     <div class='col-md-12'>
-      <%= post.content %>
+      <p>
+        <%= post.content %>
+      </p>
     </div>
     <div class='col-md-12'>
       <%= image_tag post.image.url(:thumb), class: 'instagram-upload' %>
     </div>
-    <% post.comments.each do|c| %>
-      <div class='col-md-12'>
-        <%= c.text %>
+    <div class='row comment'>
+      <div class='col-md-4'>
+        <button class='show-comments btn btn-success'>Show comments</button>
+          <div class='comments'>
+            <% post.comments.each do|c| %>
+              <p>
+                <%= c.text %>
+              </p>
+             <%end%>
+          </div>
       </div>
-    <%end%>
-    <div class='col-md-12'>
-      <%= link_to 'Edit post', edit_post_path(post) %>
-      <%= link_to 'Delete post', post_path(post), method: :delete %>
-      <%= link_to 'Add a comment', new_post_comment_path(post) %>
+      <div class='col-md-8'>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to 'Comment', new_post_comment_path(post) %>
+      </div>
     </div>
   </div>
 <% end %>

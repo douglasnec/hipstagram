@@ -9,7 +9,7 @@ describe 'editing a post' do
 
   it 'can change the Title and Content' do
     visit '/posts'
-    click_link 'Edit post'
+    click_link 'Edit'
 
     fill_in 'Title', with: 'Bye'
     fill_in 'Content', with: 'Universe'
