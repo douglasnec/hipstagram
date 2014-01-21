@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to '/posts'
+      redirect_to @post
     else
       render 'new'
     end

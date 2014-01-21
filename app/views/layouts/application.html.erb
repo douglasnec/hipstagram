@@ -12,7 +12,7 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
           <li>
-            <%= link_to 'Hipstagram', posts_path, {:class => 'navbar-brand'} %>
+            <%= link_to 'Hipstagram', root_path, {:class => 'navbar-brand'} %>
           </li>
           <li>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
@@ -32,7 +32,7 @@
           </li>
           <% end %>
           <li>
-            <%= link_to 'Add post', new_post_path, { :style => "color:red" } %>
+            <%= link_to 'Add photo', new_post_path, { :style => "color:green" } %>
           </li>
       </ul>
     </div>

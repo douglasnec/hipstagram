@@ -18,3 +18,11 @@
 <% @post.comments.each do|c| %>
   <td><%= c.text %></td>
 <%end%>
+
+   <div class='row tags'>
+        <div class='col-md-6'>
+          <% @post.tags.each do |tag| %>
+            <%= tag %>
+            <% end %>
+        </div>
+      </div>
