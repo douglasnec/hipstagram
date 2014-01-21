@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.display_by_tags_or_all(params[:tag_id])
   end
 
   def edit

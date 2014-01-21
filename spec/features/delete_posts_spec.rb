@@ -8,7 +8,7 @@ describe 'deleting a post' do
 
   it 'removes the post permanently' do
     visit '/posts'
-    click_link 'Delete'
+    click_link '✖'
 
     expect(page).not_to have_content 'Hello'
   end

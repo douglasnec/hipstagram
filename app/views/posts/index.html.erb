@@ -2,15 +2,17 @@
   No photos!
   <% end %>
 
-<div class='row'>
+<div class='row post'>
   <% @posts.each do |post| %>
     <div class='col-md-6'>
       <div class='row'>
         <div class='col-md-10'>
             <h2><%= link_to post.title, post %></h2>
         </div>
-        <div class='col-md-2'>
-          <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+        <div class='col-md-2 delete'>
+          <span class='delete-link'>
+            <%= link_to '✖', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+          </span>
          </div>
       </div>
       <div class='row'>
@@ -28,14 +30,16 @@
       <div class='row tags'>
         <div class='col-md-6'>
           <% post.tags.each do |tag| %>
-            <%= tag %>
+            <%= link_to tag, tag_posts_path(tag) %>
             <% end %>
         </div>
       </div>
-      <div class='row edit-links'>
+      <div class='row admin-box'>
         <div class='col-md-6'>
-          <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Comment', new_post_comment_path(post) %>
+          <span class='admin edit-links'>
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Add comment', new_post_comment_path(post) %>
+          </span>
         </div>
       </div>
     </div>

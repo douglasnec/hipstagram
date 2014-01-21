@@ -7,13 +7,53 @@ body a {
   text-decoration: none;
   &:hover {
     text-decoration: none;
-    color: #8C001A;
+    color: #4AA02C;
   }
   #nav-bar ul {
     list-style-type:none;
   }
 }
 
-.comment button {
-  margin: 15px;
+img {
+  border-radius: 5px;
+}
+
+.delete a {
+  margin-top:10px;
+}
+
+.tags {
+  color: #728C00;
+  font-weight: bold;
+}
+
+.delete .delete-link {
+ visibility: hidden;
+}
+
+.delete:hover .delete-link {
+  visibility: visible;
+  a {
+    color: red;
+  }
+}
+
+.edit-links a {
+  margin: 10px;
+  color: grey;
+  &:hover {
+    color: black;
+  }
+}
+
+.admin-box .admin {
+  visibility: hidden;
+}
+
+.admin-box:hover .admin {
+  visibility: visible;
+}
+
+#post_content textarea {
+  overflow: scroll;
 }

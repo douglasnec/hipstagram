@@ -19,4 +19,8 @@ class Post < ActiveRecord::Base
       Tag.find_or_create_by(:name => tag)
     end
   end
+
+  def self.display_by_tags_or_all(tag_id)
+    tag_id ? Tag.find(tag_id).posts : Post.all
+  end
 end
