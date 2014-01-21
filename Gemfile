@@ -46,7 +46,7 @@ gem 'paperclip'
 
 gem 'aws-sdk'
 
-gem 'rails_12factor', group: :producion
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
