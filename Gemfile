@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -47,6 +48,9 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 gem 'rails_12factor', group: :production
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :test, :development do
   gem 'rspec-rails'

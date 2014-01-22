@@ -1,28 +1,67 @@
 <div class='row'>
-    <div class='col-md-12'>
+  <div class='col-md-10'>
       <h2><%= link_to @post.title, @post %></h2>
-    </div>
-    <div class='col-md-12'>
-      <%= @post.content %>
-    </div>
-    <div class='col-md-12'>
-      <%= image_tag @post.image.url(:thumb), class: 'instagram-upload' %>
-    </div>
-    <div class='col-md-12'>
-      <%= link_to 'Edit', edit_post_path(@post) %>
-      <%= link_to 'Delete', post_path(@post), method: :delete %>
-      <%= link_to 'Comment', new_post_comment_path(@post) %>
-    </div>
+  </div>
+  <div class='col-md-2 delete'>
+    <span class='delete-link'>
+      <%= link_to '✖', post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+    </span>
+   </div>
 </div>
-<h4>Comments</h4>
-<% @post.comments.each do|c| %>
-  <td><%= c.text %></td>
-<%end%>
 
-   <div class='row tags'>
-        <div class='col-md-6'>
-          <% @post.tags.each do |tag| %>
-            <%= tag %>
-            <% end %>
-        </div>
-      </div>
+<div class='row'>
+  <div class='col-md-12'>
+    <p>
+      <%= @post.content %>
+    </p>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <%= image_tag @post.image.url(:thumb), class: 'instagram-upload' %>
+  </div>
+</div>
+
+<div class='row tags'>
+  <div class='col-md-6'>
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag, tag_posts_path(tag) %>
+      <% end %>
+  </div>
+  <div class='col-md-6 favourite'>
+    <span class='heart'>♡</span>
+  </div>
+</div>
+
+<div class='row admin-box'>
+  <div class='col-md-6'>
+    <span class='admin edit-links'>
+      <%= link_to 'Edit', edit_post_path(@post) %>
+      <%= link_to 'Add comment', new_post_comment_path(@post) %>
+      <%= link_to 'Add tag', edit_post_path(@post) %>
+    </span>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <h4>Buy as a print!</h4>
+    <%= form_tag charges_path do %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_4VBdirVmOW1BeZ8HGACAgSrd"
+        data-name="Demo Site"
+        data-description="blah"
+        data-amount="1000">
+      </script>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+

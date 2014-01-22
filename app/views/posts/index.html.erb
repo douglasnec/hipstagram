@@ -5,6 +5,7 @@
 <div class='row post'>
   <% @posts.each do |post| %>
     <div class='col-md-6'>
+
       <div class='row'>
         <div class='col-md-10'>
             <h2><%= link_to post.title, post %></h2>
@@ -33,12 +34,16 @@
             <%= link_to tag, tag_posts_path(tag) %>
             <% end %>
         </div>
+        <div class='col-md-6 favourite'>
+          <span class='heart'>♡</span>
+        </div>
       </div>
       <div class='row admin-box'>
         <div class='col-md-6'>
           <span class='admin edit-links'>
             <%= link_to 'Edit', edit_post_path(post) %>
             <%= link_to 'Add comment', new_post_comment_path(post) %>
+            <%= link_to 'Add tag', edit_post_path(post) %>
           </span>
         </div>
       </div>
