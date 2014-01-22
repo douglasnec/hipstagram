@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :charges
   end
 
   root to: "posts#index"
@@ -18,9 +19,8 @@ Rails.application.routes.draw do
   end
 
 
-  resources :charges
 
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

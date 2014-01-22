@@ -17,6 +17,8 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
 
+  config.filter_run_excluding slow:true
+
   config.include Warden::Test::Helpers
   Warden.test_mode!
   

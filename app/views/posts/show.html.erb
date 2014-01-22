@@ -1,4 +1,7 @@
 <div class='row'>
+  <!-- <p class="alert"><%= alert %></p> -->
+<%= bootstrap_flash %>
+
   <div class='col-md-10'>
       <h2><%= link_to @post.title, @post %></h2>
   </div>
@@ -44,10 +47,20 @@
   </div>
 </div>
 
+<div class='row comments'>
+  <div class='col-md-6'>
+    <ul>
+      <% @post.comments.map do |comment| %>
+        <li><%= comment.text %><%= comment.user.email %><li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <div class='row'>
   <div class='col-md-6'>
     <h4>Buy as a print!</h4>
-    <%= form_tag charges_path do %>
+    <%= form_tag post_charges_path(@post) do %>
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="pk_test_4VBdirVmOW1BeZ8HGACAgSrd"
@@ -58,6 +71,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 

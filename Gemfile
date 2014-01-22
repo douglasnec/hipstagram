@@ -40,6 +40,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
 
 gem 'geocoder'
 

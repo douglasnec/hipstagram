@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   has_many :comments
   has_attached_file :image, 
-                    styles: { thumb: "300x300>" },
+                    styles: { thumb: "300x300>", medium: '500x500>' },
                     storage: :s3,
                     s3_credentials: {
                       access_key_id: 'AKIAJ57EWJKMPW4556TA',
@@ -15,15 +15,10 @@ class Post < ActiveRecord::Base
   end
 
   def tag_names=(tag_names)
-    self.tags = tag_names.split(/,\s?/).map do |tag|
-      tag.downcase.gsub(/[^a-z]/, '')
-      Tag.find_or_create_by(:name => tag)
-    end
+    self.tags = Tag.find_or_create_from_tag_names(tag_names)
   end
 
   def self.display_by_tags_or_all(tag_name)
-
     tag_name ? Tag.find_by(name: tag_name).posts : Post.all
-
   end
 end
