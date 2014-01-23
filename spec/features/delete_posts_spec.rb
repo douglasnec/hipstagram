@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'deleting a post' do
   
   before do
+    login
     create(:post)
   end
 

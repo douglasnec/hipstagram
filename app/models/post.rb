@@ -1,14 +1,16 @@
 class Post < ActiveRecord::Base
   has_many :comments
+  belongs_to :user
+  has_and_belongs_to_many :tags
+  
   has_attached_file :image, 
-                    styles: { thumb: "300x300>", medium: '500x500>' },
+                    styles: { thumb: "400x400>", medium: '500x500>' },
                     storage: :s3,
                     s3_credentials: {
                       access_key_id: 'AKIAJ57EWJKMPW4556TA',
                       secret_access_key: Rails.application.secrets.s3_secret
                     },
                     bucket: 'hipstagram_development'
-  has_and_belongs_to_many :tags
 
   def tag_names
     tags.map { |tag| tag.name }.join(', ')

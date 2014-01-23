@@ -20,10 +20,11 @@ h2 a {
 
 img {
   border-radius: 5px;
+  width: 70%;
 }
 
 .delete a {
-  margin-top:10px;
+  // margin-top:10px;
 }
 
 .tags {
@@ -60,4 +61,8 @@ img {
 
 #post_content textarea {
   overflow: scroll;
+}
+
+.spinner {
+  display: none;
 }

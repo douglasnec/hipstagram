@@ -7,3 +7,18 @@ $(document).ready ->
     width: '250px'
     autoCompleteSource : ['winter', 'snow', 'remote', 'amazing']
     activateFinalResult : true
+
+  $('.show-comments').on 'click', (e) ->
+    e.preventDefault()
+    button = this
+    $('.spinner').show()
+    $(this).hide()
+
+    $.get $(this).attr('href'), (comments) ->
+      comments.forEach (comment) ->
+        newComment = Mustache.render $('#comment-template').html(), comment
+        $(newComment).appendTo('.comments-container')
+      $('.comments-container').slideDown()
+      $('.spinner').hide()
+
+

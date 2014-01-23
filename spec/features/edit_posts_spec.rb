@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'editing a post' do
   
   before(:each) do
-    create(:post)
     login
+    create(:post)
   end
 
   it 'can change the Title and Content' do
