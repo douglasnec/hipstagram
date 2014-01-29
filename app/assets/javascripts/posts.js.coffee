@@ -14,7 +14,7 @@ $(document).ready ->
     $('.spinner').show()
     $(this).hide()
 
-    $.get $(this).attr('href'), (comments) ->
+    $.get $(this).data('url'), (comments) ->
       comments.forEach (comment) ->
         newComment = Mustache.render $('#comment-template').html(), comment
         $(newComment).appendTo('.comments-container')

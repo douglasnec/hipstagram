@@ -50,7 +50,7 @@
 <% if @post.comments.any? %>
   <div class='col-md-12'>
     <div class='row comments'> 
-        <%= link_to 'Show comments', post_comments_path(@post, :format => :json), class: 'btn btn-success show-comments' %>
+        <%= link_to 'Show comments', '#', data: { url: post_comments_path(@post, format: :json) }, class: 'btn btn-success show-comments' %>
       </div>
       <div class='spinner'>
         <img src='http://www.iab.net/extra/adquickref/spinnerLarge.gif'>

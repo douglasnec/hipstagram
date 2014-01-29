@@ -48,4 +48,9 @@ class PostsController < ApplicationController
 
     redirect_to '/posts'
   end
+
+  def search
+    @posts = Post.where('title ILIKE?', "%#{params[:query]}%")
+    render 'index'
+  end
 end

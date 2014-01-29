@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'deleting a post' do
   
   before do
-    login
-    create(:post)
+    user = login
+    create(:post, :user => user)
   end
 
   it 'removes the post permanently' do

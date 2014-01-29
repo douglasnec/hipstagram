@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-no-turbolink>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div id='nav-bar'>
       <ul class="nav navbar-nav">
@@ -17,30 +17,37 @@
           <li>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
           </li>
-          <% else %>
+        <% else %>
           <li>
             <%= link_to('Login', new_user_session_path)  %>  
           </li>
-          <% end %>
-          <% if user_signed_in? %>
+        <% end %>
+        <% if user_signed_in? %>
           <li>
             <%= link_to('Edit registration', edit_user_registration_path) %>
           </li>
-          <% else %>
+        <% else %>
           <li>
             <%= link_to('Register', new_user_registration_path)  %>
           </li>
-          <% end %>
-          <li>
-            <%= link_to 'Add photo', new_post_path, { :style => "color:green" } %>
-          </li>
+        <% end %>
+        <li>
+          <%= link_to 'Add photo', new_post_path, { :style => "color:green" } %>
+        </li>
       </ul>
+      <div class="form-group">
+        <%= form_tag search_posts_path, role: 'search', class: 'navbar-form navbar-left', method: :get do %>
+            <%= text_field_tag :query, nil, id: 'search' %>
+            <%= submit_tag 'Search' %>
+        <% end %>
+      </div>
+          
+            <!-- <input type="text" class="form-control" placeholder="Search"> -->
+
     </div>
   </nav>
 
-<!-- <p class="notice"><%= notice %></p>
 
-<p class="alert"><%= alert %></p> -->
 
 <%= bootstrap_flash %>
 <div class="container">
