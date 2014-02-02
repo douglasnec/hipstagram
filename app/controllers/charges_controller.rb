@@ -9,18 +9,18 @@ class ChargesController < ApplicationController
     @post = Post.find(params[:post_id])
 
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com', #@post.user.email, adduserif
+      :email => current_user.email
       :card  => params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
-      :description => 'Rails Stripe customer',
+      :description => "Print of" + @post.title
       :currency    => 'gbp'
     )
 
-    flash[:alert] = "Bravo"
+    flash[:alert] = "Thanks for you support!"
     redirect_to post_path(@post)
     # Order.create(:user => current_user, :amount => @amount)
 

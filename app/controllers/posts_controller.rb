@@ -19,12 +19,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @post = current_user.posts.find(params[:id])
   end
 
   def index
     @posts = Post.display_by_tags_or_all(params[:tag_id])
-    # .order('created_at DESC')
   end
 
   def edit
@@ -50,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where('title ILIKE?', "%#{params[:query]}%")
+    @posts = Post.where('title ILIKE ?', "%#{params[:query]}%")
     render 'index'
   end
 end

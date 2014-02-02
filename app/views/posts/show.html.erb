@@ -1,6 +1,4 @@
 <div class='row'>
-  <!-- <p class="alert"><%= alert %></p> -->
-<%= bootstrap_flash %>
 
   <div class='col-md-10'>
       <h2><%= link_to @post.title, @post %></h2>
@@ -27,13 +25,14 @@
 </div>
 
 <div class='row tags'>
-  <div class='col-md-6'>
+  <div class='col-md-4'>
     <% @post.tags.each do |tag| %>
       <%= link_to tag, tag_posts_path(tag) %>
       <% end %>
+    <%= link_to 'Add comment', new_post_comment_path(@post), class: 'color: grey' %>
   </div>
-  <div class='col-md-6 favourite'>
-    <span class='heart'>♡</span>
+  <div class='col-md-2 favourite'>
+    hi
   </div>
 </div>
 <% if @post.user == current_user %>
@@ -41,14 +40,13 @@
     <div class='col-md-6'>
       <span class='admin edit-links'>
         <%= link_to 'Edit', edit_post_path(@post) %>
-        <%= link_to 'Add comment', new_post_comment_path(@post) %>
         <%= link_to 'Add tag', edit_post_path(@post) %>
       </span>
     </div>
   </div>
 <% end %>
 <% if @post.comments.any? %>
-  <div class='col-md-12'>
+  <div class='col-md-6'>
     <div class='row comments'> 
         <%= link_to 'Show comments', '#', data: { url: post_comments_path(@post, format: :json) }, class: 'btn btn-success show-comments' %>
       </div>
@@ -72,9 +70,9 @@
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="pk_test_4VBdirVmOW1BeZ8HGACAgSrd"
-        data-name="Demo Site"
-        data-description="blah"
-        data-amount="1000">
+        data-name="<%= @post.title%>"
+        data-amount="1000"
+        data-currency="gbp">
       </script>
     <% end %>
   </div>
