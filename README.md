@@ -1,0 +1,1 @@
+![search](https://raw2.github.com/Ericat/hipstagram/master/app/assets/images/search-title.png "Search bar)
